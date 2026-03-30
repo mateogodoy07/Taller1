@@ -20,16 +20,7 @@ public class Taller1 {
 		String[] Usuarios = leerArchivos1("Usuario.txt",lector1);
 		String[] Registros = leerArchivos2("Registros.txt",lector2);
 		
-		for(int i = 0; i < Usuarios.length; i++) {
-			if(Usuarios[i] != null) {
-				System.out.println(Usuarios[i]);
-			}
-		}
-		for(int j = 0; j < Registros.length; j++ ) {
-			if(Registros[j] != null) {
-				System.out.println(Registros[j]);
-			}
-		}
+		
 
 		// aqui empieza el menu
 		Scanner scanner = new Scanner(System.in);
@@ -178,7 +169,71 @@ public class Taller1 {
 											
 											
 										}
+									    if(selector == 2) {
+									    	try {
+												BufferedWriter duracion = new BufferedWriter(new FileWriter("Registros.txt",false));
+												System.out.println("0) Regresar.");
+												System.out.println("Ingrese nueva duracion: ");
+												int linea = Integer.valueOf(scanner.nextLine());
+												if(linea != 0) {
+													String Respuesta = ID3 + ";" + Recuerdo + ";" + linea + ";" + Situacion;
+													
+													Registros[PRO] = Respuesta;
+											
+												}
+												else {
+													duracion.close();
+													return;
+												}
+												for(int r = 0; r < Registros.length; r++) {
+													if(Registros[r] != null) {
+														duracion.write(Registros[r]);
+														duracion.newLine();
+														
+													}
+												}
+												duracion.close();
+											} catch (IOException e) {
+												
+												e.printStackTrace();
+											}
+									    	
+									    	
+									    }
+									    if(selector == 3) {
+									    	try {
+												BufferedWriter TP = new BufferedWriter(new FileWriter("Registros.txt",false)); // TP = tipo de actividad 
+												System.out.println("0) Regresar.");
+												System.out.println("Ingrese nuevo tipo de actividad: ");
+												String linea = String.valueOf(scanner.nextLine());
+												if(!linea.equals("0")) {
+													String Respuesta = ID3 + ";" + Recuerdo + ";" + Tiempo + ";" + linea;
+													
+													Registros[PRO] = Respuesta;
+											
+												}
+												else {
+													TP.close();
+													return;
+												}
+												for(int r = 0; r < Registros.length; r++) {
+													if(Registros[r] != null) {
+														TP.write(Registros[r]);
+														TP.newLine();
+														
+													}
+												}
+												TP.close();
+											} catch (IOException e) {
+												
+												e.printStackTrace();
+											}
+									    	
+									    	
+									    }
+									    
 									}
+									
 									
 								}while(opcion !=5);
 								
