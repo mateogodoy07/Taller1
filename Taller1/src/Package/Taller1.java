@@ -77,7 +77,35 @@ public class Taller1 {
 									
 									 opcion = Integer.valueOf(scanner.nextLine());
 									if(opcion == 1) {
-										
+										try {
+											BufferedWriter RA = new BufferedWriter(new FileWriter("Registros.txt",true)); // RA = registro de actividad
+											System.out.println("Ingrese fecha (dia/mes/año)");
+											String Fecha = String.valueOf(scanner.nextLine());
+											System.out.println("Ingrese las horas de esta actividad");
+											String Horas = String.valueOf(scanner.nextLine());
+											System.out.println("Ingrese la actividad realizada");
+											String Actividad = String.valueOf(scanner.nextLine());
+											
+											String RA2 = ID1 + ";" +Fecha +";"+ Horas + ";" + Actividad;
+											for(int y = 0; y < Registros.length;y++) {
+												if(Registros[y] == null) {
+													Registros[y] = RA2;
+													System.out.println(Registros[y]);
+													break;
+												}
+												
+											}
+											
+											RA.newLine();
+											RA.write(RA2);
+											RA.close();
+											
+											
+											
+											
+										}catch(IOException e) {
+											
+										}
 									}
 									if(opcion == 2) {
 										int c = 0; // un contador
@@ -131,6 +159,7 @@ public class Taller1 {
 										
 										if(selector == 1) {
 											
+											
 											try {
 												BufferedWriter fecha = new BufferedWriter(new FileWriter("Registros.txt",false));
 												System.out.println("0) Regresar.");
@@ -161,6 +190,9 @@ public class Taller1 {
 														
 													}
 												}
+												System.out.println("");
+												System.out.println("Fecha cambiada con exito!");
+												System.out.println("");
 												fecha.close();
 											} catch (IOException e) {
 												
@@ -192,6 +224,9 @@ public class Taller1 {
 														
 													}
 												}
+												System.out.println("");
+												System.out.println("Duracion cambiada con exito!");
+												System.out.println("");
 												duracion.close();
 											} catch (IOException e) {
 												
@@ -223,6 +258,9 @@ public class Taller1 {
 														
 													}
 												}
+												System.out.println("");
+												System.out.println("Actvididad cambiada con exito!");
+												System.out.println("");
 												TP.close();
 											} catch (IOException e) {
 												
@@ -232,6 +270,124 @@ public class Taller1 {
 									    	
 									    }
 									    
+									}
+									if(opcion == 3) {
+										int c = 0; // un contador
+										int[] lista = new int[300];
+										System.out.println("0) Regresar.");
+										for(int k = 0; k < Registros.length; k++) {
+											if(Registros[k]!=null) {
+												String[] partes2 = Registros[k].split(";");
+												String ID2 = partes2[0];         
+												String Fecha = partes2[1];
+												String Horas = partes2[2];
+												String Actividad = partes2[3];
+												
+												if(ID2.equals(User)) {
+													lista[c] = k;
+													c++;
+													
+													
+													System.out.println(c+")"+ " " + Registros[k]);
+													
+													
+													
+												}
+												
+											}
+										}
+										System.out.println("Que linea desea eliminar?");
+										int actividad = Integer.valueOf(scanner.nextLine());
+										int PRO = lista[actividad-1]; // posicion real original = PRO pdd: de nuevo XD
+										System.out.println(Registros[PRO]);
+										String[] partes3 = Registros[PRO].split(";");
+										String ID3 = partes3[0];         
+										String Recuerdo = partes3[1];
+										String Tiempo = partes3[2];
+										String Situacion = partes3[3];
+										
+										try {
+											BufferedWriter TP = new BufferedWriter(new FileWriter("Registros.txt",false)); // TP = tipo de actividad 
+											String linea = "disponible";
+											if(!linea.equals("0")) {
+												String Respuesta = ID3 + ";" + Recuerdo + ";" + Tiempo + ";" + linea;
+												
+												Registros[PRO] = Respuesta;
+										
+											}
+											else {
+												TP.close();
+												return;
+											}
+											for(int r = 0; r < Registros.length; r++) {
+												if(Registros[r] != null) {
+													TP.write(Registros[r]);
+													TP.newLine();
+													
+												}
+											}
+											System.out.println("");
+											System.out.println("Actvididad eliminada con exito!");
+											System.out.println("");
+											TP.close();
+										} catch (IOException e) {
+											
+											e.printStackTrace();
+										}
+										
+										
+										
+										
+										
+									}
+									if(opcion == 4) {
+										System.out.println("0) Regresar.");
+										System.out.println("Ingrese su nueva contraseña");
+										for(int b = 0; b < Usuarios.length;b++) {
+											if(Usuarios[b] != null) {
+												String[] partes4 = Usuarios[b].split(";");
+												String ID4 = partes4[0];
+												String password = partes4[1];
+												
+												try {
+													BufferedWriter CC = new BufferedWriter(new FileWriter("Usuario.txt",false)); // CC = cambio contraseña
+													if(ID4.equals(User)) {
+														String NP = String.valueOf(scanner.nextLine()); // NP = new password (nueva contraseña pa los gringos)
+														if(!NP.equals("0")) {
+															String Respuesta = ID4 +";"+ NP;
+															
+															Usuarios[b] = Respuesta;
+														}
+														else {
+															CC.close();
+															return;
+														}
+														for(int r = 0; r < Usuarios.length; r++) {
+															if(Usuarios[r] != null) {
+																System.out.println(Usuarios[r]);
+																CC.write(Usuarios[r]);
+																CC.newLine();	
+														}
+														
+													}
+													CC.close();
+													break;
+													}
+													
+													
+													
+												} catch (IOException e) {
+													
+													e.printStackTrace();
+												}
+												
+											}
+												
+											
+										}
+										
+
+										
 									}
 									
 									
@@ -243,6 +399,24 @@ public class Taller1 {
 						}
 					}
 				}
+			}
+			if(comando == 2) {
+				int opcion;
+				do {
+					System.out.println("Bienvenido al menu de analisis!");
+					System.out.println("");
+					System.out.println("Que deseas realizar?");
+					System.out.println("");
+					System.out.println("1) Actividad mas realizada");
+					System.out.println("2) Actividad mas realizada por cada usuario");
+					System.out.println("3) Usuario con mayor procastinacion");
+					System.out.println("4) Ver todas las actividades");
+					System.out.println("5) Salir");
+					
+						opcion = Integer.valueOf(scanner.nextLine());
+					
+					
+				}while(opcion !=5);
 			}
 
 			if(comando == 3) {

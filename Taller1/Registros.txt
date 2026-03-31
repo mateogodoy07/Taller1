@@ -1,4 +1,4 @@
-Martin;06/06/2026;4;ser therian
+Martin;02/02/2026;4;ViendoAlDamian
 Catalina;01/03/2026;6;ser Batman por las noches
 Estefania;01/03/2026;3;investigar las cutiemarks
 Martin;07/07/2026;666;Viendo_monos
@@ -196,5 +196,5 @@ Estefania;04/05/2026;3;investigar las cutiemarks
 Martin;05/05/2026;2;estudiar
 Catalina;05/05/2026;1;programar
 Estefania;05/05/2026;2;Ver mlp
-Martin;06/05/2026;5;ser therian
+Martin;06/05/2026;5;disponible
 Catalina;06/05/2026;6;ser Batman por las noches
