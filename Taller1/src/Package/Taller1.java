@@ -62,10 +62,10 @@ public class Taller1 {
 								
 									
 								int opcion; 
+								System.out.println("Acceso correcto!");
+								System.out.println("");
+								System.out.println("Bienvenido" +" "+ User+"!");
 								do {
-									System.out.println("Acceso correcto!");
-									System.out.println("");
-									System.out.println("Bienvenido" +" "+ User+"!");
 									System.out.println("");
 									System.out.println("Que deseas realizar?");
 									System.out.println("");
@@ -370,6 +370,9 @@ public class Taller1 {
 														}
 														
 													}
+													System.out.println("");
+													System.out.println("Contraseña cambiada con exito!");
+													System.out.println("");
 													CC.close();
 													break;
 													}
@@ -402,8 +405,8 @@ public class Taller1 {
 			}
 			if(comando == 2) {
 				int opcion;
+				System.out.println("Bienvenido al menu de analisis!");
 				do {
-					System.out.println("Bienvenido al menu de analisis!");
 					System.out.println("");
 					System.out.println("Que deseas realizar?");
 					System.out.println("");
@@ -414,12 +417,79 @@ public class Taller1 {
 					System.out.println("5) Salir");
 					
 						opcion = Integer.valueOf(scanner.nextLine());
+						
+						if(opcion == 1) {
+							
+						}
+						if(opcion == 2) {
+							
+						}
+						if(opcion == 3) { 
+							int Maximo = 0; //un maximo que ocuparemos para hallar 
+							String maximo = "";
+							for(int U = 0; U < Usuarios.length; U++) {
+								int HP = 0; // HP = horas de procastinacion
+								if(Usuarios[U]!= null) {
+									String[] partes1 = Usuarios[U].split(";");
+									String ID1 = partes1[0];
+									String Contraseña = partes1[1];
+									for(int R = 0; R < Registros.length; R++) {
+										if(Registros[R]!= null) {
+											String[] partes2 = Registros[R].split(";");
+											String ID2 = partes2[0];         
+											String Fecha = partes2[1];
+											int Horas = Integer.valueOf(partes2[2]);
+											String Actividad = partes2[3];
+											
+											if(ID2.equals(ID1)) {
+												HP += Horas;
+											}
+										}
+										
+									}
+									System.out.println(ID1 + "," + HP +" "+ "horas");
+									if(HP > Maximo) {
+										Maximo = HP;
+										maximo = ID1;
+									}
+								}
+								
+								
+								
+							}
+							System.out.println(" ");
+							System.out.println(maximo + " "+ "fue las persona que mas procastino con un total de:"+" "+ Maximo+ " "+ "horas");
+						}
+						if(opcion == 4) {
+							int c = 0; // un contador
+							int[] lista = new int[300];
+							for(int k = 0; k < Registros.length; k++) {
+								if(Registros[k]!=null) {
+									String[] partes2 = Registros[k].split(";");
+									String ID2 = partes2[0];         
+									String Fecha = partes2[1];
+									String Horas = partes2[2];
+									String Actividad = partes2[3];
+									
+									lista[c] = k;
+									c++;
+									
+									
+									System.out.println(c+")"+ " " + Registros[k]);
+									
+									
+									
+								}
+							}
+							
+						}
 					
 					
 				}while(opcion !=5);
 			}
 
 			if(comando == 3) {
+				System.out.println("Hasta la proxima!");
 				inicio = true; 
 			}
 			
