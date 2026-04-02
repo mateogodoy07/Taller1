@@ -419,9 +419,94 @@ public class Taller1 {
 						opcion = Integer.valueOf(scanner.nextLine());
 						
 						if(opcion == 1) {
+							String [] lista3 = new String [300];
+							String [] lista4 = new String [300];
+							
+							
+							
+							boolean estado = false;
+							for(int t = 0; t < Registros.length;t++) {
+								if(Registros[t] != null) {
+									String[] partes2 = Registros[t].split(";");
+									String ID2 = partes2[0];         
+									String Fecha = partes2[1];
+									int Horas = Integer.valueOf(partes2[2]);
+									String Actividad = partes2[3];
+									
+									lista3[t] = Actividad;
+									
+									
+									
+									
+									
+								}
+								
+							}
+							int maximo2 = 0;
+							String maximo ="";
+							
+							for(int z = 0; z < lista3.length;z++) {
+								int contador = 0;
+								if(lista3[z]!= null) {
+									for(int j = 0; j < lista3.length; j++) {
+										if(lista3[z].equals(lista3[j])) {
+											contador++;
+										}
+									}
+									if(contador > maximo2) {
+										maximo2 = contador;
+										maximo = lista3[z];
+									}
+									
+								}
+
+							}
+							
+							System.out.println("");
+							System.out.println("La actividad mas realizada por los usuarios fue:"+" "+ maximo +" "+ "y se repite un total del"+" "+maximo2+" "+ "veces");
+							
+							
+							
 							
 						}
 						if(opcion == 2) {
+							int Maxima = 0;
+							String MAR = ""; // MAR =  maxima actividad repetida
+							boolean condicion = false;
+							for(int C = 0; C < Usuarios.length;C++) { // uff referencia
+								String [] lista1 = new String [300];
+								String [] lista2 = new String [300];
+								if(Usuarios[C]!=null) {
+									String[] partes1 = Usuarios[C].split(";");
+									String ID1 = partes1[0];
+									String Contraseña = partes1[1];
+									
+									for(int t = 0; t < Registros[t].length();t++) {
+										if(Registros[t] != null) {
+											String[] partes2 = Registros[t].split(";");
+											String ID2 = partes2[0];         
+											String Fecha = partes2[1];
+											int Horas = Integer.valueOf(partes2[2]);
+											String Actividad = partes2[3];
+											
+											lista1[t] = Actividad;
+											
+											for(int h = 0; h < lista1.length;h++) {
+												String Actividades = lista2[h];
+												if(Actividades != Actividad) {
+													//Actividades[h] = Actividad;
+												}
+												
+											}
+											
+										}
+										
+									}
+									
+								}
+								
+								
+							}
 							
 						}
 						if(opcion == 3) { 
