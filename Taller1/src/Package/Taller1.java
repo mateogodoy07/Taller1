@@ -90,7 +90,7 @@ public class Taller1 {
 											for(int y = 0; y < Registros.length;y++) {
 												if(Registros[y] == null) {
 													Registros[y] = RA2;
-													System.out.println(Registros[y]);
+													System.out.println("Actividad registrada con exito!");
 													break;
 												}
 												
@@ -142,7 +142,7 @@ public class Taller1 {
 										String Tiempo = partes3[2];
 										String Situacion = partes3[3];
 										
-								
+										System.out.println("");
 										System.out.println("Que deseas modificar?");
 										System.out.println("");
 										System.out.println("0) Regesar.");
@@ -203,31 +203,31 @@ public class Taller1 {
 										}
 									    if(selector == 2) {
 									    	try {
-												BufferedWriter duracion = new BufferedWriter(new FileWriter("Registros.txt",false));
+												
 												System.out.println("0) Regresar.");
 												System.out.println("Ingrese nueva duracion: ");
 												int linea = Integer.valueOf(scanner.nextLine());
 												if(linea != 0) {
+													BufferedWriter duracion = new BufferedWriter(new FileWriter("Registros.txt",false));
 													String Respuesta = ID3 + ";" + Recuerdo + ";" + linea + ";" + Situacion;
 													
 													Registros[PRO] = Respuesta;
+													for(int r = 0; r < Registros.length; r++) {
+														if(Registros[r] != null) {
+															duracion.write(Registros[r]);
+															duracion.newLine();
+															
+														}
+													}
+													System.out.println("");
+													System.out.println("Duracion cambiada con exito!");
+													System.out.println("");
+													duracion.close();
 											
 												}
-												else {
-													duracion.close();
-													return;
-												}
-												for(int r = 0; r < Registros.length; r++) {
-													if(Registros[r] != null) {
-														duracion.write(Registros[r]);
-														duracion.newLine();
-														
-													}
-												}
-												System.out.println("");
-												System.out.println("Duracion cambiada con exito!");
-												System.out.println("");
-												duracion.close();
+
+
+												
 											} catch (IOException e) {
 												
 												e.printStackTrace();
@@ -470,43 +470,83 @@ public class Taller1 {
 							
 						}
 						if(opcion == 2) {
-							int Maxima = 0;
-							String MAR = ""; // MAR =  maxima actividad repetida
-							boolean condicion = false;
-							for(int C = 0; C < Usuarios.length;C++) { // uff referencia
-								String [] lista1 = new String [300];
-								String [] lista2 = new String [300];
-								if(Usuarios[C]!=null) {
-									String[] partes1 = Usuarios[C].split(";");
-									String ID1 = partes1[0];
-									String Contraseña = partes1[1];
+							String [] lista1 = new String [300];
+							
+							for(int i = 0; i < Registros.length;i++) {
+								if(Registros[i]!=null) {
+									String [] partes = Registros[i].split(";");
+									String Actividad = partes[3];
 									
-									for(int t = 0; t < Registros[t].length();t++) {
-										if(Registros[t] != null) {
-											String[] partes2 = Registros[t].split(";");
-											String ID2 = partes2[0];         
-											String Fecha = partes2[1];
-											int Horas = Integer.valueOf(partes2[2]);
-											String Actividad = partes2[3];
-											
-											lista1[t] = Actividad;
-											
-											for(int h = 0; h < lista1.length;h++) {
-												String Actividades = lista2[h];
-												if(Actividades != Actividad) {
-													//Actividades[h] = Actividad;
-												}
+									int posicion = 0;
+									boolean hola = false;
+									
+									for(int j = 0; j < lista1.length;j++) {
+										if(lista1[j]!=null) {
+											if(lista1[j].equals(Actividad)) {
+												hola = true;
 												
+											}else {
+												posicion++;
+											}
+										}
+									}
+									if(!hola) {
+										
+										for(int k = 0; k < lista1.length;k++) {
+											
+											if(lista1[k] == null) {
+												lista1[k] = Actividad;
+												break;
+											}
+										}
+
+
+									}
+								}
+							}
+							for(int z = 0; z < Usuarios.length;z++) {
+								if(Usuarios[z]!=null) {
+									String [] partes = Usuarios[z].split(";");
+									String ID = partes[0];
+									
+									int Maximo = 0;
+									String ElMaximo ="";
+									
+									for(int y = 0; y < lista1.length;y++) {
+										if(lista1[y]!=null) {
+											
+											String Actividad = lista1[y];
+											
+											int contador = 0;
+											String MaximoActual ="";
+											
+											for(int u = 0; u < Registros.length; u++) {
+												if(Registros[u]!=null) {
+													String[] partes2 = Registros[u].split(";");
+													String ID2 = partes2[0];
+													int Horas = Integer.valueOf(partes2[2]);
+													String ActividadActual = partes2[3];
+													
+													
+													if(ID.equals(ID2)&& ActividadActual.equals(Actividad)) {
+														contador = contador + Horas;
+													}
+													
+												}
+											}
+											if(contador > Maximo) {
+												Maximo = contador;
+												ElMaximo = Actividad;
 											}
 											
 										}
 										
 									}
-									
+									System.out.println(ID +" -> "+ElMaximo+" -> "+"con "+ Maximo + " horas registradas");
 								}
 								
-								
 							}
+							
 							
 						}
 						if(opcion == 3) { 
