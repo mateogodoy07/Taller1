@@ -1,14 +1,11 @@
-# Proyecto de Gestión de Usuarios y Actividades
+# 📌 Proyecto de Registro y Gestión de Actividades
 
-## 📌 Descripción del Proyecto
-El proyecto se basa en la creación de un código en el cual los diferentes usuarios registrados en un documento `.txt` (solicitado previamente por el mismo código), además de sus registros de actividades (también almacenados en un documento `.txt`), pueden ser gestionados.
+## 🧾 Descripción del Proyecto
 
-Este código entrega diferentes tipos de **menús interactivos** que permiten:
-- Modificar datos.
-- Consultar información previamente registrada.
-- Analizar actividades registradas.
+El proyecto se basa en la creación de un código en el cual se gestionan diferentes usuarios registrados en un archivo `documento.txt`, solicitado previamente por el mismo programa.  
+Además, se consideran sus registros (también almacenados en un archivo `.txt`) con todos los detalles de las actividades que hayan realizado.
 
-Todo esto se realiza a partir de la lectura y escritura de archivos de texto.
+Este código permite interactuar mediante distintos menús, los cuales sirven para **modificar o consultar los datos** solicitados anteriormente.
 
 ---
 
@@ -19,10 +16,10 @@ Todo esto se realiza a partir de la lectura y escritura de archivos de texto.
 
 ---
 
-## 🏗 Estructura del Proyecto
-Para el desarrollo del proyecto se utilizaron distintos **paquetes de Java**, ya que **no está permitido utilizar clases en este taller**.
+## 🏗️ Estructura del Proyecto
 
-Los paquetes utilizados son:
+Se utilizaron diferentes paquetes de Java, ya que **no están permitidas las clases en este taller**.  
+Los paquetes utilizados son los siguientes:
 
 ```java
 import java.io.BufferedWriter;
@@ -30,27 +27,52 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
-## Instrucciones del Código
+```
 
-⚠ ATENCIÓN! SEGUIR LAS INDICACIONES E INSTRUCCIONES DEL CÓDIGO AL PIE DE LA LETRA, SI NO SE CAE :(
+## 📦 Estos paquetes permiten:
 
-Siguiendo con lo anterior, iniciando la ejecución del código tendrá 3 opciones, de las cuales las primeras dos son:
+- Leer archivos  
+- Escribir archivos  
+- Manejar errores  
+- Recibir datos desde el teclado  
 
-1) Menú de usuarios
-2) Menú de análisis
-3) salir
+---
 
-ACLARACIÓN:
-Todos las acciones solicitadas y enumeradas funcionan con números enteros.
-Si pone algo más no funcionará :/.
+## ⚙️ Instrucciones de Uso
 
-Habiendo seleccionado la opción correcta a su elección, tendrá diferentes tipos de opciones (que también trabajan con números enteros).
+⚠️ **ATENCIÓN:**  
+Seguir las indicaciones e instrucciones del código al pie de la letra, si no, el programa puede fallar 🙁  
 
-Luego de haber seleccionado alguna de estas, siga las indicaciones que se le solicitan, y así el código funcionará.
+Al iniciar la ejecución del código, aparecerán **3 opciones principales**:
 
-ACLARACIÓN IMPORTANTE:
-Hay algunos 0) regresar que no pude hacer correctamente o directamente no funcionan.
+1. Menú de usuarios  
+2. Menú de análisis  
+3. Salir  
 
-Si selecciona alguno de estos es probable que el archivo con el cual esté trabajando sea borrado instantáneamente.
+---
 
-Perdón :(.
+## ❗ Importante
+
+- Todas las acciones funcionan con **números enteros**.  
+- Si se ingresa otro tipo de dato, el programa no funcionará correctamente.  
+- Cada menú contiene diferentes opciones que también trabajan con números enteros.  
+- Después de seleccionar una opción, simplemente siga las instrucciones que aparecen en pantalla.  
+
+---
+
+## ⚠️ Advertencias
+
+- Algunas opciones con `0` para regresar no funcionan correctamente.  
+- Si selecciona alguna de estas, existe la posibilidad de que el archivo con el que esté trabajando se borre accidentalmente.  
+- Perdón por eso 🙁  
+
+---
+
+## 💬 Nota Final
+
+Sin nada más que agregar, me despido.  
+En caso de que no sobreviva a este taller, les deseo un bonito día, tarde o noche.  
+
+**P.D.: No me rajen 🙁**
+
+
