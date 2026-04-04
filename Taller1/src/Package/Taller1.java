@@ -343,51 +343,61 @@ public class Taller1 {
 									if(opcion == 4) {
 										System.out.println("0) Regresar.");
 										System.out.println("Ingrese su nueva contraseña");
-										for(int b = 0; b < Usuarios.length;b++) {
-											if(Usuarios[b] != null) {
-												String[] partes4 = Usuarios[b].split(";");
-												String ID4 = partes4[0];
-												String password = partes4[1];
-												
-												try {
-													BufferedWriter CC = new BufferedWriter(new FileWriter("Usuario.txt",false)); // CC = cambio contraseña
-													if(ID4.equals(User)) {
-														String NP = String.valueOf(scanner.nextLine()); // NP = new password (nueva contraseña pa los gringos)
-														if(!NP.equals("0")) {
-															String Respuesta = ID4 +";"+ NP;
+										String NP = String.valueOf(scanner.nextLine()); // NP = new password (nueva contraseña pa los gringos)
+										if(!NP.equals("0")) {
+											for(int b = 0; b < Usuarios.length;b++) {
+												if(Usuarios[b] != null) {
+													String[] partes4 = Usuarios[b].split(";");
+													String ID4 = partes4[0];
+													String password = partes4[1];
+													
+													try {
+														BufferedWriter CC = new BufferedWriter(new FileWriter("Usuario.txt",false)); // CC = cambio contraseña
+														if(ID4.equals(User)) {
+															if(!NP.equals("0")) {
+																String Respuesta = ID4 +";"+ NP;
+																
+																Usuarios[b] = Respuesta;
+																
+																for(int r = 0; r < Usuarios.length; r++) {
+																	if(Usuarios[r] != null) {
+																		System.out.println(Usuarios[r]);
+																		CC.write(Usuarios[r]);
+																		CC.newLine();	
+																}
+																
+															  }
+															}
+															else {
+																CC.close();
+																break;
+															}
 															
-															Usuarios[b] = Respuesta;
-														}
-														else {
-															CC.close();
-															return;
-														}
-														for(int r = 0; r < Usuarios.length; r++) {
-															if(Usuarios[r] != null) {
-																System.out.println(Usuarios[r]);
-																CC.write(Usuarios[r]);
-																CC.newLine();	
+														System.out.println("");
+														System.out.println("Contraseña cambiada con exito!");
+														System.out.println("");
+														CC.close();
+														break;
 														}
 														
+														
+														
+													} catch (IOException e) {
+														
+														e.printStackTrace();
 													}
-													System.out.println("");
-													System.out.println("Contraseña cambiada con exito!");
-													System.out.println("");
-													CC.close();
-													break;
-													}
 													
-													
-													
-												} catch (IOException e) {
-													
-													e.printStackTrace();
 												}
+													
 												
 											}
-												
 											
 										}
+										else {
+											System.out.println("No paso nada");
+											
+										}
+										
 										
 
 										
